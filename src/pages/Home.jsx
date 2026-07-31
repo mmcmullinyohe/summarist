@@ -8,7 +8,7 @@ import hero from "../assets/hero.png";
 import logo from "../assets/logo.png";
 
 function Home() {
-      const headings = [
+  const headings = [
     "Enhance your knowledge",
     "Achieve greater success",
     "Improve your health",
@@ -103,20 +103,18 @@ function Home() {
             </div>
             <div className="statistics__wrapper">
               <div className="statistics__content--header">
-                <div className="statistics__heading">
-                  Enhance your knowledge
-                </div>
-                <div className="statistics__heading">
-                  Achieve greater success
-                </div>
-                <div className="statistics__heading">Improve your health</div>
-                <div className="statistics__heading">
-                  Develop better parenting skills
-                </div>
-                <div className="statistics__heading">Increase happiness</div>
-                <div className="statistics__heading">
-                  Be the best version of yourself!
-                </div>
+                {headings.map((heading, index) => (
+                  <div
+                    key={index}
+                    className={
+                      index === activeHeading
+                        ? "statistics__heading statistics__heading--active"
+                        : "statistics__heading"
+                    }
+                  >
+                    {heading}
+                  </div>
+                ))}
               </div>
               <div className="statistics__content--details">
                 <div className="statistics__data">
