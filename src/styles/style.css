@@ -45,7 +45,7 @@ button:disabled {
 }
 
 .container {
-  padding: 40px 0;
+  padding: 20px 0;
   width: 100%;
 }
 
@@ -137,7 +137,10 @@ button:disabled {
 }
 
 .landing__content {
-  width: 100%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .landing__image--mask {
@@ -157,6 +160,7 @@ button:disabled {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 24px;
+  line-height: 1;
 }
 
 .landing__content__subtitle {
