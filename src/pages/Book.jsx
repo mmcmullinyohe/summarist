@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../styles/book.css";
 import Navbar from "../components/Navbar";
 
 function Book() {
   const { id } = useParams();
+  const navigate = useNavigate();
+const { user, openAuthModal } = useAuth();
   const [book, setBook] = useState(null);
 const [loading, setLoading] = useState(true);
 
@@ -23,40 +26,67 @@ useEffect(() => {
   fetchBook();
 }, [id]);
 
+function handleBookAccess() {
+  if (!user) {
+    openAuthModal();
+    return;
+  }
+
+  const isSubscribed =
+    user.subscription === "premium" ||
+    user.subscription === "premium-plus";
+
+  if (book.subscriptionRequired && !isSubscribed) {
+    navigate("/choose-plan");
+    return;
+  }
+
+  navigate(`/player/${book.id}`);
+}
+
 if (loading) {
   return <h1>Loading...</h1>;
 }
 
+if (!book) {
+  return <h1>Book not found.</h1>;
+}
+
 return (
-  <main className="book-page">
+  <>
     <Navbar />
-    <div className="book-container">
-      <img src={book.imageLink} alt={book.title} />
 
-      <div className="book-info">
-        <h1>{book.title}</h1>
-        <h2>{book.author}</h2>
-        <p>{book.subTitle}</p>
-        <p>⭐ {book.averageRating}</p>
-        <div className="book-actions">
-  <button
-    className="book-action-button"
-    onClick={() => window.location.href = `/player/${book.id}`}
-  >
-    Read
-  </button>
+    <main className="book-page">
+      <div className="book-container">
+        <img src={book.imageLink} alt={book.title} />
 
-  <button
-    className="book-action-button"
-    onClick={() => window.location.href = `/player/${book.id}`}
-  >
-    Listen
-  </button>
-</div>
-        <p>{book.bookDescription}</p>
+        <div className="book-info">
+          <h1>{book.title}</h1>
+          <h2>{book.author}</h2>
+          <p>{book.subTitle}</p>
+          <p>⭐ {book.averageRating}</p>
+
+          <div className="book-actions">
+            <button
+              className="book-action-button"
+              onClick={handleBookAccess}
+            >
+              Read
+            </button>
+
+            <button
+              className="book-action-button"
+              onClick={handleBookAccess}
+            >
+              Listen
+            </button>
+          </div>
+
+          <p>{book.bookDescription}</p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </>
 );
 }
 
