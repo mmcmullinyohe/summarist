@@ -1,44 +1,36 @@
 .player-page {
   display: flex;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: calc(100vh - 80px);
   margin: 0 auto;
-  min-height: 100vh;
 }
 
 .player-sidebar {
-  width: 340px;
-  padding: 40px 24px;
+  width: 320px;
+  flex-shrink: 0;
+  padding: 40px 32px;
   border-right: 1px solid #e5e7eb;
   text-align: center;
 }
 
 .player-sidebar img {
-  width: 220px;
-  margin-bottom: 24px;
+  display: block;
+  width: 210px;
+  max-width: 100%;
+  margin: 0 auto 24px;
 }
 
-.player-content {
-  flex: 1;
-  padding: 40px 60px;
-}
-
-.player-content h1 {
+.player-sidebar h2 {
+  margin-bottom: 8px;
   color: #032b41;
-  margin-bottom: 12px;
 }
 
-.player-content h2 {
+.player-sidebar p {
   color: #6b757b;
-  margin-bottom: 24px;
-}
-
-.player-content p {
-  line-height: 1.8;
-  color: #394547;
 }
 
 .player-rating {
-  color: #6b757b;
   margin: 12px 0 24px;
 }
 
@@ -50,28 +42,68 @@
 }
 
 .player-buttons button {
+  width: 100%;
   padding: 14px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
 
 .read-btn {
-  background: #2bd97c;
+  background-color: #2bd97c;
   color: #032b41;
 }
 
 .listen-btn {
-  background: #032b41;
+  background-color: #032b41;
   color: white;
 }
 
-.read-btn:hover {
-  background: #20ba68;
+.player-content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px;
 }
 
-.listen-btn:hover {
-  background: #05415d;
+.player-content h1 {
+  margin-bottom: 8px;
+  color: #032b41;
+  font-size: 36px;
+}
+
+.player-content h2 {
+  margin-bottom: 24px;
+  color: #6b757b;
+  font-size: 20px;
+}
+
+.player-content p {
+  max-width: 760px;
+  color: #394547;
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+.player-content audio {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 28px;
+}
+
+@media (max-width: 768px) {
+  .player-page {
+    flex-direction: column;
+  }
+
+  .player-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .player-content {
+    padding: 32px 24px;
+  }
 }

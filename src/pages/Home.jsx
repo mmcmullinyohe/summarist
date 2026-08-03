@@ -7,8 +7,10 @@ import { RiLeafLine } from "react-icons/ri";
 import hero from "../assets/hero.png";
 import logo from "../assets/logo.png";
 import Navbar from "../components/Navbar";
+import { useAuth } from "../context/AuthContext";
 
 function Home() {
+  const { openAuthModal } = useAuth();
   const headings = [
     "Enhance your knowledge",
     "Achieve greater success",
@@ -55,7 +57,9 @@ function Home() {
                   <br className="remove--tablet" />
                   and even people who don’t like to read.
                 </div>
-                <button className="btn home__cta--btn">Login</button>
+                <button className="btn home__cta--btn" onClick={openAuthModal}>
+                  Login
+                </button>
               </div>
               <figure className="landing__image--mask">
                 <img src={hero} alt="landing" />
@@ -163,18 +167,18 @@ function Home() {
                 </div>
               </div>
               <div className="statistics__content--header statistics__content--header-second">
-  {secondHeadings.map((heading, index) => (
-    <div
-      key={heading}
-      className="statistics__heading"
-      style={{
-        color: index === activeHeading ? "#2bd97c" : "#6b757b",
-      }}
-    >
-      {heading}
-    </div>
-  ))}
-</div>
+                {secondHeadings.map((heading, index) => (
+                  <div
+                    key={heading}
+                    className="statistics__heading"
+                    style={{
+                      color: index === activeHeading ? "#2bd97c" : "#6b757b",
+                    }}
+                  >
+                    {heading}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

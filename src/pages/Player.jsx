@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import "../styles/player.css";
 
 function Player() {
@@ -7,7 +8,7 @@ function Player() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  import Navbar from "../components/Navbar";
+  
 
   useEffect(() => {
     async function fetchBook() {
@@ -41,16 +42,16 @@ function Player() {
     return <h1>{error}</h1>;
   }
 
-  return (
+ return (
+  <>
+    <Navbar />
+
     <main className="player-page">
-      <Navbar />
       <aside className="player-sidebar">
         <img src={book.imageLink} alt={book.title} />
 
         <h2>{book.title}</h2>
-
         <p>{book.author}</p>
-
         <p className="player-rating">⭐ {book.averageRating}</p>
 
         <div className="player-buttons">
@@ -65,13 +66,13 @@ function Player() {
 
         <p>{book.summary}</p>
 
-        <audio controls>
-          <source src={book.audioLink} type="audio/mpeg" />
+        <audio controls src={book.audioLink}>
           Your browser does not support the audio element.
         </audio>
       </section>
     </main>
-  );
+  </>
+);
 }
 
 export default Player;
