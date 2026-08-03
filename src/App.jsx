@@ -19,6 +19,7 @@ function App() {
         <Route path="/choose-plan" element={<ChoosePlan />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/player/:id" element={<Player />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,38 @@
+.player-page {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.player-sidebar {
+  width: 340px;
+  padding: 40px 24px;
+  border-right: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.player-sidebar img {
+  width: 220px;
+  margin-bottom: 24px;
+}
+
+.player-content {
+  flex: 1;
+  padding: 40px 60px;
+}
+
+.player-content h1 {
+  color: #032b41;
+  margin-bottom: 12px;
+}
+
+.player-content h2 {
+  color: #6b757b;
+  margin-bottom: 24px;
+}
+
+.player-content p {
+  line-height: 1.8;
+  color: #394547;
+}
