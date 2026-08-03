@@ -36,3 +36,42 @@
   line-height: 1.8;
   color: #394547;
 }
+
+.player-rating {
+  color: #6b757b;
+  margin: 12px 0 24px;
+}
+
+.player-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.player-buttons button {
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.read-btn {
+  background: #2bd97c;
+  color: #032b41;
+}
+
+.listen-btn {
+  background: #032b41;
+  color: white;
+}
+
+.read-btn:hover {
+  background: #20ba68;
+}
+
+.listen-btn:hover {
+  background: #05415d;
+}

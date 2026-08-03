@@ -7,6 +7,7 @@ import Player from "./pages/Player";
 import ChoosePlan from "./pages/ChoosePlan";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import AuthModal from "./components/AuthModal";
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
         <Route path="/choose-plan" element={<ChoosePlan />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/player/:id" element={<Player />} />
       </Routes>
+      <AuthModal />
     </BrowserRouter>
   );
 }

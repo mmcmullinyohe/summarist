@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/book.css";
+import Navbar from "../components/Navbar";
 
 function Book() {
   const { id } = useParams();
@@ -28,6 +29,7 @@ if (loading) {
 
 return (
   <main className="book-page">
+    <Navbar />
     <div className="book-container">
       <img src={book.imageLink} alt={book.title} />
 

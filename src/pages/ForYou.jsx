@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/forYou.css";
+import Navbar from "../components/Navbar";
 
 function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -65,6 +66,7 @@ function ForYou() {
 
   return (
     <main className="for-you">
+      <Navbar />
       <h1>For You</h1>
 
 <section>

@@ -7,12 +7,13 @@ function Player() {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  import Navbar from "../components/Navbar";
 
   useEffect(() => {
     async function fetchBook() {
       try {
         const response = await fetch(
-          `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
+          `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`,
         );
 
         if (!response.ok) {
@@ -40,29 +41,37 @@ function Player() {
     return <h1>{error}</h1>;
   }
 
-return (
-  <main className="player-page">
-    <aside className="player-sidebar">
-      <img src={book.imageLink} alt={book.title} />
+  return (
+    <main className="player-page">
+      <Navbar />
+      <aside className="player-sidebar">
+        <img src={book.imageLink} alt={book.title} />
 
-      <h2>{book.title}</h2>
-      <p>{book.author}</p>
-      <p>⭐ {book.averageRating}</p>
-    </aside>
+        <h2>{book.title}</h2>
 
-    <section className="player-content">
-      <h1>{book.title}</h1>
-      <h2>{book.author}</h2>
+        <p>{book.author}</p>
 
-      <p>{book.summary}</p>
+        <p className="player-rating">⭐ {book.averageRating}</p>
 
-      <audio controls>
-        <source src={book.audioLink} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </section>
-  </main>
-);
+        <div className="player-buttons">
+          <button className="read-btn">Read</button>
+          <button className="listen-btn">Listen</button>
+        </div>
+      </aside>
+
+      <section className="player-content">
+        <h1>{book.title}</h1>
+        <h2>{book.author}</h2>
+
+        <p>{book.summary}</p>
+
+        <audio controls>
+          <source src={book.audioLink} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </section>
+    </main>
+  );
 }
 
 export default Player;
