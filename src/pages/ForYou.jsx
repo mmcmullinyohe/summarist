@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/forYou.css";
 
 function ForYou() {
@@ -70,27 +71,27 @@ function ForYou() {
   <h2>Selected Book</h2>
 
   {selectedBook && (
-  <div className="selected-book">
-    <img
-      src={selectedBook.imageLink}
-      alt={selectedBook.title}
-    />
+    <Link
+      to={`/book/${selectedBook.id}`}
+      className="selected-book"
+    >
+      <img
+        src={selectedBook.imageLink}
+        alt={selectedBook.title}
+      />
 
-    <div className="selected-book-info">
-      <h3>{selectedBook.title}</h3>
+      <div className="selected-book-info">
+        <h3>{selectedBook.title}</h3>
+        <p>{selectedBook.author}</p>
+        <p>{selectedBook.subTitle}</p>
+        <p>⭐ {selectedBook.averageRating}</p>
 
-      <p>{selectedBook.author}</p>
-
-      <p>{selectedBook.subTitle}</p>
-
-      <p>⭐ {selectedBook.averageRating}</p>
-
-      {selectedBook.subscriptionRequired && (
-        <span className="premium-badge">Premium</span>
-      )}
-    </div>
-  </div>
-)}
+        {selectedBook.subscriptionRequired && (
+          <span className="premium-badge">Premium</span>
+        )}
+      </div>
+    </Link>
+  )}
 </section>
 
       <section>
@@ -98,7 +99,11 @@ function ForYou() {
 
   <div className="book-row">
     {recommendedBooks.map((book) => (
-      <div className="book-card" key={book.id}>
+      <Link
+  to={`/book/${book.id}`}
+  className="book-card"
+  key={book.id}
+>
         <img src={book.imageLink} alt={book.title} />
         <h3>{book.title}</h3>
         <p>{book.author}</p>
@@ -106,7 +111,7 @@ function ForYou() {
         <p>Rating: {book.averageRating}</p>
 
         {book.subscriptionRequired && <span>Premium</span>}
-      </div>
+      </Link>
     ))}
   </div>
 </section>
@@ -116,7 +121,11 @@ function ForYou() {
 
   <div className="book-row">
     {suggestedBooks.map((book) => (
-      <div className="book-card" key={book.id}>
+      <Link
+  to={`/book/${book.id}`}
+  className="book-card"
+  key={book.id}
+>
         <img src={book.imageLink} alt={book.title} />
         <h3>{book.title}</h3>
         <p>{book.author}</p>
@@ -124,7 +133,7 @@ function ForYou() {
         <p>Rating: {book.averageRating}</p>
 
         {book.subscriptionRequired && <span>Premium</span>}
-      </div>
+      </Link>
     ))}
   </div>
 </section>
