@@ -17,6 +17,15 @@ function Home() {
     "Be the best version of yourself!",
   ];
 
+  const secondHeadings = [
+    "Expand your learning",
+    "Accomplish your goals",
+    "Strengthen your vitality",
+    "Become a better caregiver",
+    "Improve your mood",
+    "Maximize your abilities",
+  ];
+
   const [activeHeading, setActiveHeading] = useState(0);
 
   useEffect(() => {
@@ -120,16 +129,18 @@ function Home() {
                 <div className="statistics__data">
                   <div className="statistics__data--number">93%</div>
                   <div className="statistics__data--title">
-                    of Summarist members <b>report feeling more productive</b>{" "}
-                    after incorporating the service into their daily routine.
+                    of Summarist members <b>significantly increase</b> reading
+                    frequency.
                   </div>
                 </div>
+
                 <div className="statistics__data">
                   <div className="statistics__data--number">96%</div>
                   <div className="statistics__data--title">
                     of Summarist members <b>establish better</b> habits.
                   </div>
                 </div>
+
                 <div className="statistics__data">
                   <div className="statistics__data--number">90%</div>
                   <div className="statistics__data--title">
@@ -143,7 +154,7 @@ function Home() {
                 <div className="statistics__data">
                   <div className="statistics__data--number">91%</div>
                   <div className="statistics__data--title">
-                    of Summarist members <b>report feeling more productive</b>
+                    of Summarist members <b>report feeling more productive</b>{" "}
                     after incorporating the service into their daily routine.
                   </div>
                 </div>
@@ -163,19 +174,18 @@ function Home() {
                 </div>
               </div>
               <div className="statistics__content--header statistics__content--header-second">
-                <div className="statistics__heading">Expand your learning</div>
-                <div className="statistics__heading">Accomplish your goals</div>
-                <div className="statistics__heading">
-                  Strengthen your vitality
-                </div>
-                <div className="statistics__heading">
-                  Become a better caregiver
-                </div>
-                <div className="statistics__heading">Improve your mood</div>
-                <div className="statistics__heading">
-                  Maximize your abilities
-                </div>
-              </div>
+  {secondHeadings.map((heading, index) => (
+    <div
+      key={heading}
+      className="statistics__heading"
+      style={{
+        color: index === activeHeading ? "#2bd97c" : "#6b757b",
+      }}
+    >
+      {heading}
+    </div>
+  ))}
+</div>
             </div>
           </div>
         </div>

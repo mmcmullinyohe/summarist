@@ -226,6 +226,10 @@ button:disabled {
   color: #2bd97c;
 }
 
+.statistics__content--header-second .statistics__heading--active {
+  color: #2bd97c;
+}
+
 .statistics__wrapper {
   display: flex;
   gap: 80px;
@@ -244,7 +248,8 @@ button:disabled {
 }
 
 .statistics__content--header-second {
-  align-items: flex-end;
+  align-items: center;
+  text-align: center;
 }
 
 .statistics__content--details {
