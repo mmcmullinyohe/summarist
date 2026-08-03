@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/forYou.css";
 
 function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -35,9 +36,7 @@ function ForYou() {
         const recommendedData = await recommendedResponse.json();
         const suggestedData = await suggestedResponse.json();
 
-        setSelectedBook(
-          Array.isArray(selectedData) ? selectedData[0] : selectedData
-        );
+        setSelectedBook(selectedData[0]);
         setRecommendedBooks(
           Array.isArray(recommendedData) ? recommendedData : []
         );
@@ -64,63 +63,71 @@ function ForYou() {
   }
 
   return (
-    <main>
+    <main className="for-you">
       <h1>For You</h1>
 
-      <section>
-        <h2>Selected Book</h2>
+<section>
+  <h2>Selected Book</h2>
 
-        {selectedBook ? (
-          <div>
-            <img
-              src={selectedBook.imageLink}
-              alt={selectedBook.title}
-              width="200"
-            />
+  {selectedBook && (
+  <div className="selected-book">
+    <img
+      src={selectedBook.imageLink}
+      alt={selectedBook.title}
+    />
 
-            <h3>{selectedBook.title}</h3>
-            <p>{selectedBook.author}</p>
-            <p>{selectedBook.subTitle}</p>
-            <p>Rating: {selectedBook.averageRating}</p>
+    <div className="selected-book-info">
+      <h3>{selectedBook.title}</h3>
 
-            {selectedBook.subscriptionRequired && <span>Premium</span>}
-          </div>
-        ) : (
-          <p>No selected book was found.</p>
-        )}
-      </section>
+      <p>{selectedBook.author}</p>
 
-      <section>
-        <h2>Recommended Books</h2>
+      <p>{selectedBook.subTitle}</p>
 
-        {recommendedBooks.map((book) => (
-          <div key={book.id}>
-            <img src={book.imageLink} alt={book.title} width="150" />
-            <h3>{book.title}</h3>
-            <p>{book.author}</p>
-            <p>{book.subTitle}</p>
-            <p>Rating: {book.averageRating}</p>
+      <p>⭐ {selectedBook.averageRating}</p>
 
-            {book.subscriptionRequired && <span>Premium</span>}
-          </div>
-        ))}
-      </section>
+      {selectedBook.subscriptionRequired && (
+        <span className="premium-badge">Premium</span>
+      )}
+    </div>
+  </div>
+)}
+</section>
 
       <section>
-        <h2>Suggested Books</h2>
+  <h2>Recommended Books</h2>
 
-        {suggestedBooks.map((book) => (
-          <div key={book.id}>
-            <img src={book.imageLink} alt={book.title} width="150" />
-            <h3>{book.title}</h3>
-            <p>{book.author}</p>
-            <p>{book.subTitle}</p>
-            <p>Rating: {book.averageRating}</p>
+  <div className="book-row">
+    {recommendedBooks.map((book) => (
+      <div className="book-card" key={book.id}>
+        <img src={book.imageLink} alt={book.title} />
+        <h3>{book.title}</h3>
+        <p>{book.author}</p>
+        <p>{book.subTitle}</p>
+        <p>Rating: {book.averageRating}</p>
 
-            {book.subscriptionRequired && <span>Premium</span>}
-          </div>
-        ))}
-      </section>
+        {book.subscriptionRequired && <span>Premium</span>}
+      </div>
+    ))}
+  </div>
+</section>
+
+<section>
+  <h2>Suggested Books</h2>
+
+  <div className="book-row">
+    {suggestedBooks.map((book) => (
+      <div className="book-card" key={book.id}>
+        <img src={book.imageLink} alt={book.title} />
+        <h3>{book.title}</h3>
+        <p>{book.author}</p>
+        <p>{book.subTitle}</p>
+        <p>Rating: {book.averageRating}</p>
+
+        {book.subscriptionRequired && <span>Premium</span>}
+      </div>
+    ))}
+  </div>
+</section>
     </main>
   );
 }
