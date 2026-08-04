@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
 
 function Settings() {
   const { user, logout, openAuthModal } = useAuth();
@@ -29,6 +30,7 @@ function Settings() {
   return (
     <>
       <Navbar />
+      <SearchBar />
 
       <main style={{ maxWidth: "700px", margin: "40px auto" }}>
         <h1>Settings</h1>

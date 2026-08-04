@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "../styles/book.css";
 import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
 
 function Book() {
   const { id } = useParams();
@@ -55,6 +56,7 @@ if (!book) {
 return (
   <>
     <Navbar />
+    <SearchBar />
 
     <main className="book-page">
       <div className="book-container">

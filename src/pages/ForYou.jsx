@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/forYou.css";
 import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
+import Sidebar from "../components/Sidebar";
 
 function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -65,8 +67,12 @@ function ForYou() {
   }
 
   return (
+    <div className="app-layout">
+  <Sidebar />
     <main className="for-you">
       <Navbar />
+      <SearchBar />
+      
       <h1>For You</h1>
 
 <section>
@@ -140,6 +146,7 @@ function ForYou() {
   </div>
 </section>
     </main>
+    </div>
   );
 }
 

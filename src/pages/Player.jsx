@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/player.css";
+import SearchBar from "../components/SearchBar";
 
 function Player() {
   const { id } = useParams();
@@ -76,6 +77,7 @@ function Player() {
   return (
     <>
       <Navbar />
+      <SearchBar />
 
       <main className="player-page">
         <aside className="player-sidebar">
