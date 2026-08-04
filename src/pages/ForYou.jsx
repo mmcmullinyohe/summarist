@@ -4,6 +4,7 @@ import "../styles/forYou.css";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import Sidebar from "../components/Sidebar";
+import BookSkeleton from "../components/BookSkeleton";
 
 function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -58,10 +59,30 @@ function ForYou() {
     fetchBooks();
   }, []);
 
-  if (loading) {
-    return <h1>Loading books...</h1>;
-  }
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <SearchBar />
 
+      <div className="app-layout">
+        <Sidebar />
+
+        <main className="for-you">
+          <h1>For You</h1>
+
+          <h2>Recommended Books</h2>
+
+          <div className="book-row">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <BookSkeleton key={index} />
+            ))}
+          </div>
+        </main>
+      </div>
+    </>
+  );
+}
   if (error) {
     return <h1>{error}</h1>;
   }

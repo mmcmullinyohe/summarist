@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 * {
@@ -65,10 +66,6 @@ button:disabled {
 
 .btn:hover:not(:disabled) {
   background-color: #20ba68;
-}
-
-.btn:active {
-  transform: translateY(1px);
 }
 
 .home__cta--btn {
@@ -250,10 +247,6 @@ button:disabled {
 }
 
 .statistics__heading--active {
-  color: #2bd97c;
-}
-
-.statistics__content--header-second .statistics__heading--active {
   color: #2bd97c;
 }
 
@@ -526,6 +519,7 @@ button:disabled {
 
   .numbers__wrapper {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .statistics__content--details-second {
@@ -559,10 +553,6 @@ button:disabled {
 
   .review__body {
     font-size: 14px;
-  }
-
-  .numbers__wrapper {
-    gap: 24px;
   }
 
   .numbers__title {
@@ -726,9 +716,55 @@ button:disabled {
   min-width: 0;
 }
 
+@media (max-width: 850px) {
+  .app-layout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 16px 20px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  .sidebar a,
+  .sidebar button {
+    width: auto;
+  }
+
+  .search-bar {
+    width: calc(100% - 32px);
+    margin: 12px 16px;
+  }
+}
+
 @media (max-width: 576px) {
   .nav__list--mobile {
     display: none;
   }
-}
 
+  .navbar {
+    height: auto;
+    padding: 16px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .navbar-logo {
+    height: 36px;
+  }
+
+  .sidebar {
+    gap: 12px 18px;
+  }
+}

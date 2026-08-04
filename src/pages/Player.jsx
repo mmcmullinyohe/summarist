@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/player.css";
 import SearchBar from "../components/SearchBar";
+import Sidebar from "../components/Sidebar";
 
 function Player() {
   const { id } = useParams();
@@ -79,6 +80,10 @@ function Player() {
       <Navbar />
       <SearchBar />
 
+        <div className="app-layout">
+    <Sidebar />
+
+
       <main className="player-page">
         <aside className="player-sidebar">
           <img src={book.imageLink} alt={book.title} />
@@ -116,6 +121,7 @@ function Player() {
           </audio>
         </section>
       </main>
+      </div>
     </>
   );
 }

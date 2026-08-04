@@ -1,15 +1,17 @@
 .player-page {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   min-height: calc(100vh - 80px);
   margin: 0 auto;
+  gap: 64px;
+  padding: 40px 48px;
 }
 
 .player-sidebar {
-  width: 320px;
+  width: 300px;
   flex-shrink: 0;
-  padding: 40px 32px;
+  padding: 0 24px 40px;
   border-right: 1px solid #e5e7eb;
   text-align: center;
 }
@@ -24,6 +26,8 @@
 .player-sidebar h2 {
   margin-bottom: 8px;
   color: #032b41;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .player-sidebar p {
@@ -56,54 +60,96 @@
   color: #032b41;
 }
 
+.read-btn:hover {
+  background-color: #20ba68;
+}
+
 .listen-btn {
   background-color: #032b41;
   color: white;
 }
 
+.listen-btn:hover {
+  background-color: #05415d;
+}
+
 .player-content {
   flex: 1;
   min-width: 0;
-  padding: 40px 48px;
+  max-width: 900px;
+  padding: 0 24px 48px;
 }
 
 .player-content h1 {
   margin-bottom: 8px;
   color: #032b41;
-  font-size: 36px;
+  font-size: 40px;
+  line-height: 1.15;
 }
 
 .player-content h2 {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   color: #6b757b;
   font-size: 20px;
 }
 
 .player-content p {
-  max-width: 760px;
+  width: 100%;
+  max-width: 900px;
   color: #394547;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.8;
   white-space: pre-line;
+  text-align: left;
 }
 
 .player-content audio {
+  display: block;
   width: 100%;
-  max-width: 760px;
-  margin-top: 28px;
+  max-width: 900px;
+  margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .player-page {
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .player-sidebar {
+    width: 260px;
+  }
+
+  .player-content {
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 768px) {
   .player-page {
     flex-direction: column;
+    gap: 32px;
+    padding: 24px;
   }
 
   .player-sidebar {
     width: 100%;
+    padding: 0 0 32px;
     border-right: none;
     border-bottom: 1px solid #e5e7eb;
   }
 
   .player-content {
-    padding: 32px 24px;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .player-content h1 {
+    font-size: 32px;
+  }
+
+  .player-content p {
+    font-size: 16px;
   }
 }
