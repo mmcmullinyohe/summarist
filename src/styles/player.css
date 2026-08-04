@@ -4,14 +4,14 @@
   max-width: 1400px;
   min-height: calc(100vh - 80px);
   margin: 0 auto;
-  gap: 64px;
+  gap: 48px;
   padding: 40px 48px;
 }
 
 .player-sidebar {
   width: 300px;
   flex-shrink: 0;
-  padding: 0 24px 40px;
+  padding: 0 32px 40px 0;
   border-right: 1px solid #e5e7eb;
   text-align: center;
 }
@@ -76,7 +76,7 @@
 .player-content {
   flex: 1;
   min-width: 0;
-  max-width: 900px;
+  max-width: 850px;
   padding: 0 24px 48px;
 }
 
@@ -95,7 +95,7 @@
 
 .player-content p {
   width: 100%;
-  max-width: 900px;
+  max-width: 850px;
   color: #394547;
   font-size: 18px;
   line-height: 1.8;
@@ -106,7 +106,7 @@
 .player-content audio {
   display: block;
   width: 100%;
-  max-width: 900px;
+  max-width: 850px;
   margin-top: 32px;
 }
 
@@ -165,8 +165,7 @@
   }
 }
 
-
-@media (max-width: 1024px) {
+@media (max-width: 1050px) {
   .player-page {
     gap: 32px;
     padding: 32px 24px;
@@ -206,6 +205,7 @@
   }
 
   .player-content p {
+    max-width: none;
     font-size: 16px;
   }
 }
