@@ -63,9 +63,36 @@ function Player() {
     setIsPlaying(false);
   }
 
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <SearchBar />
+
+      <div className="app-layout">
+        <Sidebar />
+
+        <main className="player-page">
+          <aside className="player-sidebar">
+            <div className="player-loading-cover"></div>
+            <div className="player-loading-heading"></div>
+            <div className="player-loading-short"></div>
+          </aside>
+
+          <section className="player-content">
+            <div className="player-loading-title"></div>
+            <div className="player-loading-short"></div>
+
+            <div className="player-loading-line"></div>
+            <div className="player-loading-line"></div>
+            <div className="player-loading-line"></div>
+            <div className="player-loading-line player-loading-line-short"></div>
+          </section>
+        </main>
+      </div>
+    </>
+  );
+}
 
   if (error) {
     return <h1>{error}</h1>;

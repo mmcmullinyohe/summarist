@@ -110,6 +110,62 @@
   margin-top: 32px;
 }
 
+.player-loading-cover,
+.player-loading-heading,
+.player-loading-title,
+.player-loading-short,
+.player-loading-line {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  animation: player-loading-pulse 1.2s ease-in-out infinite;
+}
+
+.player-loading-cover {
+  width: 210px;
+  height: 300px;
+  margin: 0 auto 24px;
+}
+
+.player-loading-heading {
+  width: 80%;
+  height: 24px;
+  margin: 0 auto 14px;
+}
+
+.player-loading-title {
+  width: 65%;
+  height: 44px;
+  margin-bottom: 18px;
+}
+
+.player-loading-short {
+  width: 40%;
+  height: 18px;
+  margin-bottom: 28px;
+}
+
+.player-loading-line {
+  width: 100%;
+  height: 18px;
+  margin-bottom: 14px;
+}
+
+.player-loading-line-short {
+  width: 70%;
+}
+
+@keyframes player-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
 @media (max-width: 1024px) {
   .player-page {
     gap: 32px;
