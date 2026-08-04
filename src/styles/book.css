@@ -153,6 +153,57 @@
   }
 }
 
+.book-loading-cover,
+.book-loading-title,
+.book-loading-line {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  animation: book-loading-pulse 1.2s ease-in-out infinite;
+}
+
+.book-loading-cover {
+  grid-column: 2;
+  grid-row: 1;
+  width: 280px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.book-loading-title {
+  width: 70%;
+  height: 44px;
+  margin-bottom: 24px;
+}
+
+.book-loading-line {
+  width: 100%;
+  height: 18px;
+  margin-bottom: 14px;
+}
+
+.book-loading-line-short {
+  width: 45%;
+}
+
+@keyframes book-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 850px) {
+  .book-loading-cover {
+    order: 1;
+    width: 230px;
+    height: 330px;
+  }
+}
+
 /* Phones */
 @media (max-width: 576px) {
   .book-page {

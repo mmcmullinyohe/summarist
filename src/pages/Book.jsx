@@ -46,9 +46,32 @@ function Book() {
     navigate(`/player/${book.id}`);
   }
 
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+ if (loading) {
+  return (
+    <>
+      <Navbar />
+      <SearchBar />
+
+      <div className="app-layout">
+        <Sidebar />
+
+        <main className="book-page">
+          <div className="book-container">
+            <div className="book-loading-cover"></div>
+
+            <div className="book-info">
+              <div className="book-loading-title"></div>
+              <div className="book-loading-line book-loading-line-short"></div>
+              <div className="book-loading-line"></div>
+              <div className="book-loading-line"></div>
+              <div className="book-loading-line"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </>
+  );
+}
 
   if (!book) {
     return <h1>Book not found.</h1>;

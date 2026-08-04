@@ -1,10 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("summarist-user");
+
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("summarist-user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("summarist-user");
+    }
+  }, [user]);
 
   function openAuthModal() {
     setIsAuthModalOpen(true);
@@ -16,6 +34,7 @@ export function AuthProvider({ children }) {
 
   function logout() {
     setUser(null);
+    closeAuthModal();
   }
 
   return (
@@ -35,5 +54,11 @@ export function AuthProvider({ children }) {
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth must be used inside AuthProvider.");
+  }
+
+  return context;
 }
