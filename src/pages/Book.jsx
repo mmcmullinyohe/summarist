@@ -29,22 +29,30 @@ function Book() {
     fetchBook();
   }, [id]);
 
-  function handleBookAccess() {
-    if (!user) {
-      openAuthModal();
-      return;
-    }
+function handleBookAccess() {
+  const isPremiumBook = book.subscriptionRequired === true;
 
-    const isSubscribed =
-      user.subscription === "premium" || user.subscription === "premium-plus";
-
-    if (book.subscriptionRequired && !isSubscribed) {
-      navigate("/choose-plan");
-      return;
-    }
-
+  if (!isPremiumBook) {
     navigate(`/player/${book.id}`);
+    return;
   }
+
+  if (!user) {
+    openAuthModal();
+    return;
+  }
+
+  const isSubscribed =
+    user.subscription === "premium" ||
+    user.subscription === "premium-plus";
+
+  if (!isSubscribed) {
+    navigate("/choose-plan");
+    return;
+  }
+
+  navigate(`/player/${book.id}`);
+}
 
  if (loading) {
   return (
